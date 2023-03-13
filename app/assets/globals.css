@@ -1247,7 +1247,7 @@ font-weight: 600;
   justify-content: center;
   background: rgba(0, 0, 0, 0.6);
   z-index: 9999999;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 .visible{
@@ -2212,7 +2212,7 @@ footer{
   .down-arrow{
       padding: 8px;
       z-index: 10;
-      display: none;
+      display: flex;
       height: 35px;
       cursor: pointer;
       opacity: 1;
