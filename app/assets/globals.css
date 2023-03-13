@@ -30,7 +30,7 @@ body{
   position: fixed;
   top: 0;
   left: 0;
-  height: 100vh;
+  height: 100%;
   width: 100vw;
   z-index: 99999999;
 }
@@ -128,8 +128,8 @@ font-weight: 500;
 
 .dp-active{
   border: 2px solid black;
-  width: 26px;
-  height: 26px;
+  width: 26px !important;
+  height: 26px !important;
 }
 
 .profile-active p{
@@ -1909,7 +1909,8 @@ cursor: pointer;
 }
 
 .active-bottom-cta{
-  border-top: 1px solid rgb(38, 38, 38);
+  border-top: 2px solid rgb(38, 38, 38);
+  margin-top: -2px;
 }
 
 .active-bottom-cta p{
