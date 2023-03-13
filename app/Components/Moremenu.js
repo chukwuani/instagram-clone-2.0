@@ -12,7 +12,7 @@ export default function Moremenu({ menu }) {
     <section className="more-option-section">
     <div className="more-option-modal">
         <ul className="more-option-list">
-            <li className="more-list-items important-option">
+            <li className="more-list-items important-option report">
                 <a href="#">Report</a>
             </li>
             <li className="more-list-items important-option unfollow-btn">
