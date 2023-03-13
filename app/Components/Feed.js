@@ -46,7 +46,7 @@ export default function Feed() {
        </div>
 
        <div className="post-body">
-        <img loading="eager" src="/ronaldo-post.jpg" />
+        <img loading="eager" src="/Ronaldo-post.jpg" />
        </div>
 
        <div className="reaction">
