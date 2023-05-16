@@ -1,14 +1,9 @@
 "use client";
-import { useEffect, useState } from "react";
-import Homepage from "./Components/Homepage";
-import Loader from "./Components/Loader";
+import { useState } from "react";
+import LoggedIn from "./Components/LoggedIn";
 
 export default function Home() {
-  const [loading, setLoading] = useState(true);
+  const [isLogged, setisLogged] = useState(false);
 
-  useEffect(() => {
-    setLoading(!loading);
-  }, []);
-
-  return <main>{loading ? <Loader /> : <Homepage />}</main>;
+  return <main>{isLogged ? <LoggedIn /> : <LoggedIn />}</main>;
 }

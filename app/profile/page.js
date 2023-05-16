@@ -1,18 +1,17 @@
 "use client";
 import React, { useState } from "react";
-import Createpost from "../Components/Createpost";
-import Footer from "../Components/Footer";
-import Navbar from "../Components/Navbar";
-import Saved from "../Components/Saved";
-import Share from "../Components/Share";
-import Tagged from "../Components/Tagged";
+
+import Footer from "../constants/Footer";
+import Navbar from "../constants/Navbar";
+import Saved from "./Saved";
+import Share from "./Share";
+import Tagged from "./Tagged";
 
 export default function page() {
-  const [post, setPost] = useState(false);
   const [activeCta, setActivecta] = useState("Share");
   return (
     <>
-      <Navbar active="Profile" top={false} post={setPost} setter={post} />
+      <Navbar active="Profile" top={false} />
 
       <div className="profile-navbar">
         <span className="profile-setting" style={{ display: "flex" }}>
@@ -330,8 +329,6 @@ export default function page() {
           </div>
         </section>
       </div>
-
-      {post && <Createpost close={setPost} closer={post} />}
     </>
   );
 }

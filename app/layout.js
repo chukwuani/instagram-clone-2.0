@@ -1,12 +1,10 @@
-import './/assets/globals.css'
+import "./globals.css";
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head />
-      <body>
-        {children}
-      </body>
+      <body>{children}</body>
     </html>
-  )
+  );
 }
