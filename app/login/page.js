@@ -1,18 +1,19 @@
 import Image from "next/image";
+import Footer from "../constants/Footer";
 
 export default function page() {
   return (
     <section className="login-page">
-      <div className="app-display">
+      {/* <div className="app-display">
         <Image src="/signup-bg.png" width={465} height={635} alt="" priority />
 
         <Image className="slideshow" src="/slide1.png" width={250} height={541} alt="" priority />
-      </div>
+      </div> */}
 
       <section className="login-form-section">
         <span className="logo">
           <svg
-            style={{ width: 170, height: "auto", marginBottom: 32 }}
+            style={{ width: 175, height: "auto" }}
             aria-label="Instagram"
             color="#262626"
             fill="#262626"
@@ -31,22 +32,38 @@ export default function page() {
         <form action="" className="login-form">
           <div className="form-col">
             <label htmlFor="email">Username or email</label>
-            <input type="email" name="email" />
+            <input type="email" id="email" name="email" />
           </div>
 
           <div className="form-col">
             <label htmlFor="password">Password</label>
-            <input type="password" name="password" />
+            <input type="password" id="password" name="password" />
           </div>
 
           <button type="submit">Log in</button>
         </form>
 
-        <p>OR</p>
+        <div className="or-seperator">
+          <div className="left-seperator"></div>
+          <p>OR</p>
+          <div className="right-seperator"></div>
+        </div>
 
-        <p>Log in with Email</p>
-        <p>forgot password?</p>
+        <div className="other-login-option">
+          <a href="#">Log in with Google</a>
+          <a style={{ fontSize: 14 }} href="http://" target="_blank">
+            Forgot password?
+          </a>
+        </div>
       </section>
+
+      <div className="signup-wrapper">
+        <p>
+          Don't have an account? <a href="#">Sign up</a>
+        </p>
+      </div>
+
+      <Footer />
     </section>
   );
 }

@@ -7,8 +7,8 @@ export default function LoggedIn() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    setLoading(!loading);
+    document.addEventListener("DOMContentLoaded", setLoading(false));
   }, []);
 
-  return <main>{loading ? <Loader /> : <Homepage />}</main>;
+  return <>{loading ? <Loader /> : <Homepage />}</>;
 }

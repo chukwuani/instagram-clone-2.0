@@ -1,22 +1,73 @@
 "use client";
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
 export default function Stories() {
-  const story = useRef(null);
+  const [stories, setStories] = useState([
+    {
+      id: crypto.randomUUID(),
+      image: "/burna.jpg",
+      username: "burnaboygram",
+      link: "/story",
+    },
+    {
+      id: crypto.randomUUID(),
+      image: "/272936185_5717041594985591_5214662175918471705_n.jpg",
+      username: "teknomiles",
+      link: "/story",
+    },
+    {
+      id: crypto.randomUUID(),
+      image: "/omahlay.jpg",
+      username: "omah_lay",
+      link: "/story",
+    },
+    {
+      id: crypto.randomUUID(),
+      image: "/rema.jpg",
+      username: "heisrema",
+      link: "/story",
+    },
+    {
+      id: crypto.randomUUID(),
+      image: "/sydney.jpg",
+      username: "sydneytalker",
+      link: "/story",
+    },
+    {
+      id: crypto.randomUUID(),
+      image: "/fireboy.jpg",
+      username: "fireboydml",
+      link: "/story",
+    },
+    {
+      id: crypto.randomUUID(),
+      image: "/ayrastarr.jpg",
+      username: "ayrastarr",
+      link: "/story",
+    },
+    {
+      id: crypto.randomUUID(),
+      image: "/jazzy.jpg",
+      username: "donjazzy",
+      link: "/story",
+    },
+  ]);
+  const allStories = useRef(null);
   const [width, setWidth] = useState(0);
   const [scroll, setScroll] = useState(0);
 
   useEffect(() => {
-    setWidth(story.current.offsetWidth + 10);
+    setWidth(allStories.current.offsetWidth + 10);
   }, []);
 
   const backward = () => {
-    const scrollBackward = (story.current.scrollLeft -= width);
+    const scrollBackward = (allStories.current.scrollLeft -= width);
     setScroll(scrollBackward);
   };
 
   const forward = () => {
-    const scrollForward = (story.current.scrollLeft += width);
+    const scrollForward = (allStories.current.scrollLeft += width);
     setScroll(scrollForward);
   };
 
@@ -29,62 +80,17 @@ export default function Stories() {
           aria-label="Go back"></button>
       )}
 
-      <ul className="story-slides" ref={story}>
-        <li className="slide">
-          <span className="story-ring" style={{ position: "relative" }}>
-            <img src="/burna.jpg" />
-          </span>
-          <p>burnaboygram</p>
-        </li>
-
-        <li className="slide">
-          <span className="story-ring" style={{ position: "relative" }}>
-            <img src="/272936185_5717041594985591_5214662175918471705_n.jpg" />
-          </span>
-          <p>teknomiles</p>
-        </li>
-
-        <li className="slide">
-          <span className="story-ring" style={{ position: "relative" }}>
-            <img src="/omahlay.jpg" />
-          </span>
-          <p>omah_lay</p>
-        </li>
-
-        <li className="slide">
-          <span className="story-ring" style={{ position: "relative" }}>
-            <img src="/rema.jpg" />
-          </span>
-          <p>heisrema</p>
-        </li>
-
-        <li className="slide">
-          <span className="story-ring" style={{ position: "relative" }}>
-            <img src="/sydney.jpg" />
-          </span>
-          <p>sydneytalker</p>
-        </li>
-
-        <li className="slide">
-          <span className="story-ring" style={{ position: "relative" }}>
-            <img src="/fireboy.jpg" />
-          </span>
-          <p>fireboydml</p>
-        </li>
-
-        <li className="slide">
-          <span className="story-ring" style={{ position: "relative" }}>
-            <img src="/ayrastarr.jpg" />
-          </span>
-          <p>ayrastarr</p>
-        </li>
-
-        <li className="slide">
-          <span className="story-ring" style={{ position: "relative" }}>
-            <img src="/jazzy.jpg" />
-          </span>
-          <p>donjazzy</p>
-        </li>
+      <ul className="story-slides" ref={allStories}>
+        {stories.map((story) => (
+          <li key={story.id}>
+            <Link href={story.link} className="slide">
+              <span className="story-ring" style={{ position: "relative" }}>
+                <img src={story.image} alt="profile-pic" />
+              </span>
+              <p>{story.username}</p>
+            </Link>
+          </li>
+        ))}
       </ul>
 
       {scroll < width && (

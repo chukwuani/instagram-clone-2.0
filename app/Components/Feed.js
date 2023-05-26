@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useLayoutEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Moremenu from "./Moremenu";
 import Image from "next/image";
@@ -18,6 +18,7 @@ export default function Feed() {
         username: "cristiano",
       },
       posts: ["/Ronaldo-post.jpg"],
+      scroll: 0,
       isVerified: true,
       isLikedByYou: false,
       isSaved: false,
@@ -42,6 +43,7 @@ export default function Feed() {
         "/burnapost7.jpg",
         "/burnapost8.jpg",
       ],
+      scroll: 0,
       isVerified: true,
       isLikedByYou: false,
       isSaved: false,
@@ -49,25 +51,38 @@ export default function Feed() {
     },
   ]);
   const [width, setWidth] = useState(0);
-  const [scroll, setScroll] = useState(0);
   const [menu, setMenu] = useState(false);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     setWidth(posts.current.offsetWidth);
   }, []);
 
-  const backward = () => {
-    const scrollBackward = (posts.current.scrollLeft -= width);
-    setScroll(scrollBackward);
+  const backward = (e, id) => {
+    e.target.nextSibling.scrollLeft -= width;
 
-    console.log(scroll);
+    setFeed(
+      feed.map((item) => {
+        if (item.id === id) {
+          return { ...item, scroll: e.target.nextSibling.scrollLeft - width };
+        } else {
+          return item;
+        }
+      })
+    );
   };
 
-  const forward = () => {
-    const scrollForward = (posts.current.scrollLeft += width);
-    setScroll(scrollForward);
-
-    console.log(scroll);
+  const forward = (e, id) => {
+    e.target.previousSibling.scrollLeft += width;
+    console.log(e.target.previousSibling.scrollWidth);
+    setFeed(
+      feed.map((item) => {
+        if (item.id === id) {
+          return { ...item, scroll: e.target.previousSibling.scrollLeft + width };
+        } else {
+          return item;
+        }
+      })
+    );
   };
 
   function toggleSaved(id) {
@@ -130,12 +145,8 @@ export default function Feed() {
           </div>
 
           <div className="post-body-main">
-            {item.posts.length > 2 && scroll > 0 ? (
-              <button onClick={() => backward()} className="post-back-btn" />
-            ) : null}
-
-            {item.posts.length > 2 && scroll < width * item.posts.length ? (
-              <button onClick={() => forward()} className="post-next-btn" />
+            {item.posts.length > 1 && item.scroll > 0 ? (
+              <button onClick={(e) => backward(e, item.id)} className="post-back-btn" />
             ) : null}
 
             <ul className="multiple-post-body" ref={posts}>
@@ -153,6 +164,10 @@ export default function Feed() {
                 </li>
               ))}
             </ul>
+
+            {item.posts.length > 1 && item.scroll < width * (item.posts.length - 1) ? (
+              <button onClick={(e) => forward(e, item.id)} className="post-next-btn" />
+            ) : null}
           </div>
 
           <div className="reaction">
