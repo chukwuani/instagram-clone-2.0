@@ -20,6 +20,24 @@
   --animation-slow: all 0.9s cubic-bezier(0.7, 0, 0.3, 1);
 }
 
+/* input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0px 1000px #ffffff inset;
+} */
+
+.form-col input:-webkit-autofill,
+.form-col input:-webkit-autofill:hover,
+.form-col input:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0px 1000px rgb(250, 250, 250) inset;
+}
+
 body {
   position: relative;
   overflow-x: hidden;
@@ -2170,13 +2188,13 @@ footer {
 .login-page {
   width: 100%;
   min-height: 100%;
-  margin-bottom: 44px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-left: clamp(2.5em, 8vw, 8em);
+  /* padding-left: clamp(2.5em, 8vw, 8em);
   padding-right: clamp(2.5em, 8vw, 8em);
+  margin-bottom: 44px; */
 }
 
 .login-form-section {
@@ -2206,6 +2224,13 @@ footer {
   margin-top: 24px;
 }
 
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+}
+
 .login-form button {
   all: unset;
   width: auto;
@@ -2222,7 +2247,42 @@ footer {
   margin: 8px 40px;
 }
 
+.signup-form button {
+  all: unset;
+  width: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--blue-btn-color);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 8px;
+  text-align: center;
+  padding: 7px 16px;
+  margin: 8px 40px;
+  opacity: 0.7;
+}
+
+.google-login-btn {
+  all: unset;
+  width: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--blue-btn-color);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 8px;
+  text-align: center;
+  padding: 7px 16px;
+  margin: 8px 40px;
+  opacity: 1 !important;
+}
+
 .form-col {
+  min-height: 38px;
   border: 1px solid var(--divider);
   background: #ffff;
   background-color: rgb(250, 250, 250);
@@ -2232,6 +2292,42 @@ footer {
   margin: 0px 40px 6px;
   width: auto;
   font-size: 14px;
+  position: relative;
+}
+
+.form-col input {
+  font-size: 12px;
+  appearance: none;
+  text-align: left;
+  background: rgb(250, 250, 250);
+  border: none;
+  flex: 1 0 auto;
+  margin: 0;
+  outline: none;
+  overflow: hidden;
+  padding: 9px 0 7px 8px;
+  text-overflow: ellipsis;
+}
+
+.form-col label {
+  border: none;
+  color: rgb(115, 115, 115);
+  font-size: 12px;
+  height: 36px px;
+  left: 8px;
+  line-height: 36px;
+  margin: 0;
+  overflow: hidden;
+  padding: 0;
+  pointer-events: none;
+  position: absolute;
+  right: 0;
+  text-overflow: ellipsis;
+  transform-origin: left;
+  transition: transform ease-out 0.1s;
+  -webkit-user-select: none;
+  vertical-align: baseline;
+  white-space: nowrap;
 }
 
 .or-seperator {
@@ -2271,7 +2367,7 @@ footer {
   border: 1px solid var(--divider);
   border-radius: 1px;
   margin: 0px 0px 10px;
-  padding: 10px 0px;
+  padding: 5px 0px;
 }
 
 .signup-wrapper p {
@@ -2285,34 +2381,88 @@ footer {
   font-weight: 600;
 }
 
+.login-wrapper {
+  display: flex;
+  justify-content: center;
+  max-width: 350px;
+  width: 100%;
+  align-items: center;
+  background-color: #fff;
+  border: 1px solid var(--divider);
+  border-radius: 1px;
+  margin: 0px 0px 10px;
+  padding: 5px 0px;
+}
+
+.login-wrapper p {
+  font-size: 14px;
+  text-align: center;
+  margin: 15px;
+}
+
+.login-wrapper p a {
+  color: var(--blue-btn-color);
+  font-weight: 400;
+}
+
 .other-login-option {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 12px;
+  gap: 15px;
   margin: 0px 0px 10px;
   padding: 10px 0px;
 }
 
 .other-login-option a {
-  color: var(--blue-btn-color);
-}
-
-/* .app-display {
-  max-width: 465px;
-  width: 100%;
-  height: auto;
-  max-height: 635px;
   display: flex;
-  position: relative;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 600;
+  color: #385185;
 }
 
-.slideshow {
-  position: absolute;
-  right: 58px;
-  top: 25px;
-} */
+.google-logo {
+  width: 16px;
+  height: 16px;
+  margin-right: 8px;
+}
+
+.login-label {
+  transform: scale(calc(10 / 12)) translateY(-10px);
+}
+
+.login-input {
+  padding: 14px 0 2px 8px !important;
+}
+
+.terms {
+  font-size: 12px;
+  color: rgb(115, 115, 115);
+  max-width: 100%;
+  line-height: 16px;
+}
+
+.terms a {
+  color: rgb(0, 55, 107);
+}
+
+.conditions {
+  line-height: 16px;
+  margin: 10px 40px;
+  text-align: center;
+}
+
+.signup-info {
+  color: rgb(115, 115, 115);
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 20px;
+  margin: 0 40px 10px;
+  text-align: center;
+}
 
 .verified-badge {
   margin-top: 2px;

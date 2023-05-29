@@ -1,15 +1,14 @@
+"use client";
 import Image from "next/image";
 import Footer from "../constants/Footer";
+import { useState } from "react";
 
 export default function page() {
+  const [userName, setUserName] = useState("");
+  const [password, setPassword] = useState("");
+
   return (
     <section className="login-page">
-      {/* <div className="app-display">
-        <Image src="/signup-bg.png" width={465} height={635} alt="" priority />
-
-        <Image className="slideshow" src="/slide1.png" width={250} height={541} alt="" priority />
-      </div> */}
-
       <section className="login-form-section">
         <span className="logo">
           <svg
@@ -29,15 +28,34 @@ export default function page() {
           </svg>
         </span>
 
-        <form action="" className="login-form">
+        <form method="post" className="login-form">
           <div className="form-col">
-            <label htmlFor="email">Username or email</label>
-            <input type="email" id="email" name="email" />
+            <label className={userName.length > 0 ? "login-label" : undefined} htmlFor="email">
+              Username or email
+            </label>
+            <input
+              type="email"
+              value={userName}
+              onChange={(e) => setUserName(e.target.value)}
+              id="email"
+              name="email"
+              autoComplete="true"
+              className={userName.length > 0 ? "login-input" : undefined}
+            />
           </div>
 
           <div className="form-col">
-            <label htmlFor="password">Password</label>
-            <input type="password" id="password" name="password" />
+            <label className={password.length > 0 ? "login-label" : undefined} htmlFor="password">
+              Password
+            </label>
+            <input
+              type="password"
+              id="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              name="password"
+              className={password.length > 0 ? "login-input" : undefined}
+            />
           </div>
 
           <button type="submit">Log in</button>
@@ -50,8 +68,11 @@ export default function page() {
         </div>
 
         <div className="other-login-option">
-          <a href="#">Log in with Google</a>
-          <a style={{ fontSize: 14 }} href="http://" target="_blank">
+          <a href="#" aria-roledescription="link">
+            <img className="google-logo" src="/google.svg" alt="Google logo" />
+            Log in with Google
+          </a>
+          <a style={{ fontSize: 12, fontWeight: 400 }} href="http://" target="_blank">
             Forgot password?
           </a>
         </div>
@@ -59,7 +80,7 @@ export default function page() {
 
       <div className="signup-wrapper">
         <p>
-          Don't have an account? <a href="#">Sign up</a>
+          Don't have an account? <a href="/signup">Sign up</a>
         </p>
       </div>
 
