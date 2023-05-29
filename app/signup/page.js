@@ -34,7 +34,7 @@ export default function page() {
 
         <form method="post" className="signup-form" style={{ marginBottom: 10 }}>
           <button className="google-login-btn" type="submit">
-            <img className="google-logo" src="/google.svg" alt="Google logo" />
+            <img className="google-logo" src="/google-white-bg.svg" alt="Google logo" />
             Log in with Google
           </button>
 
