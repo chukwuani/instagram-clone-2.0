@@ -54,9 +54,8 @@ export default function page() {
           </div>
 
           <Discover />
-          {/* <Discover />
           <Discover />
-          <Discover /> */}
+
           <Footer />
         </section>
       </div>

@@ -49,6 +49,23 @@ export default function Feed() {
       isSaved: false,
       replies: [],
     },
+    // {
+    //   id: crypto.randomUUID(),
+    //   caption:
+    //     "You have just been Rickrolled.💪🏼 Thank you for your support, we know we can count on you!🤍🖤",
+    //   createdAt: "6 days ago",
+    //   likeCount: 23768090,
+    //   user: {
+    //     image: "/Instagram-logo.png",
+    //     username: "Instagram",
+    //   },
+    //   posts: ["/rick-astley-never-gonna-give-you-up_362329.mp4"],
+    //   scroll: 0,
+    //   isVerified: true,
+    //   isLikedByYou: false,
+    //   isSaved: false,
+    //   replies: [],
+    // },
   ]);
   const [width, setWidth] = useState(0);
   const [menu, setMenu] = useState(false);
@@ -150,17 +167,26 @@ export default function Feed() {
             ) : null}
 
             <ul className="multiple-post-body" ref={posts}>
-              {item.posts.map((img, index) => (
+              {item.posts.map((item, index) => (
                 <li key={index} className="post-body multiple-img">
-                  <Image
-                    onDoubleClick={() => toggleLiked(item.id)}
-                    src={img}
-                    alt="post"
-                    priority
-                    width={500}
-                    height={500}
-                    quality={100}
-                  />
+                  {item.endsWith("mp4") ? (
+                    <video
+                      src={item}
+                      onDoubleClick={() => toggleLiked(item.id)}
+                      width={500}
+                      height={"auto"}
+                      controls></video>
+                  ) : (
+                    <Image
+                      onDoubleClick={() => toggleLiked(item.id)}
+                      src={item}
+                      alt="post"
+                      priority
+                      width={500}
+                      height={500}
+                      quality={100}
+                    />
+                  )}
                 </li>
               ))}
             </ul>
